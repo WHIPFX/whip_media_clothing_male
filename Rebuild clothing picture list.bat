@@ -3,9 +3,16 @@ rem Double-click after adding, removing or renaming clothing pictures (img\cloth
 rem It rewrites whip_core\data\clothing-pictures.json, the list of which clothing items have a picture (the
 rem character editor leaves out the ones without). Then restart whip_media_clothing_male, whip_media_clothing_female
 rem and whip_core: whip_core reads the new list then.
-rem whip_core is beside this pack's folder, or one up when the packs are in [whip]\[assets].
-set "CORE=%~dp0..\whip_core"
-if not exist "%CORE%\dev\clothing_pictures.js" set "CORE=%~dp0..\..\whip_core"
+rem whip_core is looked for one, two and three folders up: beside this pack, or with the packs in [whip]\[assets]
+rem or in [whip]\[assets]\[media].
+set "CORE="
+for %%D in ("%~dp0.." "%~dp0..\.." "%~dp0..\..\..") do if not defined CORE if exist "%%~D\whip_core\dev\clothing_pictures.js" set "CORE=%%~D\whip_core"
+if not defined CORE (
+    echo whip_core was not found near this folder.
+    echo.
+    pause
+    exit /b 1
+)
 node "%CORE%\dev\clothing_pictures.js"
 echo.
 pause
