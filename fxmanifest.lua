@@ -5,6 +5,7 @@ name 'whip_media_clothing_male'
 author 'Whippy'
 description 'whip\'s clothing pictures for the character editor: the male body.'
 version '1.0.0'
+whip_updates 'WHIPFX/whip_media_clothing_male'   -- whip_core checks this repository's releases for a newer version
 lua54 'yes'
 
 -- A MEDIA PACK. whip's pictures, videos and map live apart from whip_core, because a player's game downloads each
