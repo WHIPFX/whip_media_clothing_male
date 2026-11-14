@@ -13,9 +13,10 @@ lua54 'yes'
 -- pack alone. whip_core never names a pack: its shared/assets_index.lua (made by whip_core/dev/assets_index.mjs from
 -- the packs' folders) says which holds what. Run that again after moving files between packs.
 --
--- Packs start before or after whip_core, in any order (`ensure [whip]` starts them all). Restarting one never touches
+-- Packs start before or after whip_core, in any order (the `ensure` of the folder they are in starts them all:
+-- `[assets]` in a server made by WHIP's recipe). Restarting one never touches
 -- gameplay: restart it to send players pictures added since its last start.
-whip_media_pack 'yes'   -- how whip_core's dev tools find the packs, wherever they are in [whip]
+whip_media_pack 'yes'   -- how whip_core's dev tools find the packs, wherever they are in the resources folder
 
 -- Saves pictures for whip_core (FXServer lets a resource write only into its own folder). The same file in every media
 -- pack. Server only: players do not download it.
